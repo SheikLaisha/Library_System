@@ -1,0 +1,30 @@
+<!--{% extends 'base.html' %}
+
+{% block title %} Search {% endblock %}
+
+{% block header %} Search {% endblock %}
+
+{% block body %}
+    <label for="search"></label>
+    <input type="text" class="input" name="q" placeholder="Search here" hx-get="/search" hx-trigger="keyup changed delay:500ms" hx-target="#results">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script> 
+
+    <form action="{{ url_for('search') }}" method="post">
+        <input type="text" name="search_query" placeholder="Enter search query">
+        <button type="submit">Search</button> 
+    </form>
+
+{% endblock %} -->
+
+{% extends 'base.html' %}
+
+{% block title %} Search {% endblock %}
+
+{% block header %} Search {% endblock %}
+
+{% block body %}
+    <form action="{{ url_for('search') }}" method="post">
+        <input type="text" name="search_query" placeholder="Enter search query">
+        <button type="submit">Search</button>
+    </form>
+{% endblock %}

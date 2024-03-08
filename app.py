@@ -32,7 +32,20 @@ class Books(db.Model):
 @app.route('/')
 def index():
     data_books = db.session.query(Books)
-    return render_template('index.html', data=data_books)
+
+    data_books = db.session.query(Books)
+
+    # pagination
+    page = request.args.get('page')
+    if page and page.isdigit():
+        page = int(page)
+    else:
+        page=1
+    pages = data_books.paginate(page=page, per_page=2)
+
+    return render_template('index.html', data=data_books, pages=pages)
+    
+    # return render_template('index.html', data=data_books)
 
 @app.route('/input', methods=['GET' , 'POST'])
 def input_data():
